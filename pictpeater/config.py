@@ -15,12 +15,12 @@ def loadCfg(cfg):
 		return tomllib.load(cfg)
 
 defaultConfig={
-	"topBannerSize": 5,
+	"topBannerSize": 10,
 	"topBannerColor": "#0000FF",
 	"topTextColor": "#00FFFF",
-	"bottomBannerSize": 5,
+	"bottomBannerSize": 8,
 	"bottomBannerColor": "#00FF00",
-	"bottomTextColor": "#FFFF00",
+	"bottomTextColor": "#FF0000",
 	"callsign": ""
 }
 

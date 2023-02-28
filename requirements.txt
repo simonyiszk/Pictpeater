@@ -1,2 +1,3 @@
 pysstv
 simpleaudio
+Pillow>=8.0.0
