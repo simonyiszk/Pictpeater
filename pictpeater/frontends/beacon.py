@@ -8,7 +8,7 @@ class FrontendBeacon(Frontend):
 		cfgBeacon=cfg["frontends"]["beacon"]
 		self.submit=cb_submit_im
 		self.period=600
-		self.images=Path(cfgBeacon["image_dir"]).iterdir()
+		self.images=list(Path(cfgBeacon["image_dir"]).iterdir())
 		self.image_idx=0
 		self.timer_init()
 	

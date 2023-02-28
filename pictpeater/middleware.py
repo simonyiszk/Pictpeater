@@ -11,16 +11,16 @@ Watermark the image
 def watermark(im, cfg):
 	draw=ImageDraw.Draw(im)
 	(imW, imH)=im.size
-	if cfg.topBannerSize > 0:
-		bannerH=imH*cfg.topBannerSize//100
-		draw.rectangle([0, 0, imW, bannerH], fill=cfg.topBannerColor)
-		draw.text([0, 0], cfg.callsign, fill=topTextColor, font=ImageFont.truetype(size=bannerH))
-		draw.text([0, 0], PictpeaterMode, fill=topTextColor, font=ImageFont.truetype(size=bannerH), anchor="rt")
-	if cfg.bottomBannerSize > 0:
-		bannerH=imH*cfg.bottomBannerSize//100
-		draw.rectangle([imH-bannerH, 0, imW, imH], fill=cfg.bottomBannerColor)
-		draw.text([imH, 0], PictpeaterVersion, fill=bottomTextColor, font=ImageFont.truetype(size=bannerH), anchor="lb")
-		draw.text([imH, imW], cfg.callsign, fill=bottomTextColor, font=ImageFont.truetype(size=bannerH), anchor="rb")
+	if cfg["topBannerSize"] > 0:
+		bannerH=imH*cfg["topBannerSize"]//100
+		draw.rectangle([0, 0, imW, bannerH], fill=cfg["topBannerColor"])
+		draw.text([0, 0], cfg["callsign"], fill=cfg["topTextColor"], font=ImageFont.truetype("DejaVuSerif", size=bannerH))
+		draw.text([0, 0], PictpeaterMode, fill=cfg["topTextColor"], font=ImageFont.truetype("DejaVuSerif", size=bannerH), anchor="rt")
+	if cfg["bottomBannerSize"] > 0:
+		bannerH=imH*cfg["bottomBannerSize"]//100
+		draw.rectangle([imH-bannerH, 0, imW, imH], fill=cfg["bottomBannerColor"])
+		draw.text([imH, 0], PictpeaterVersion, fill=cfg["bottomTextColor"], font=ImageFont.truetype("DejaVuSerif", size=bannerH), anchor="lb")
+		draw.text([imH, imW], cfg["callsign"], fill=cfg["bottomTextColor"], font=ImageFont.truetype("DejaVuSerif", size=bannerH), anchor="rb")
 
 def _dispatch(im, backends, cfg):
 	watermark(im, cfg)

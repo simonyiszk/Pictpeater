@@ -16,11 +16,11 @@ def loadCfg(cfg):
 
 defaultConfig={
 	"topBannerSize": 5,
-	"topBannerColor": "# 0000FF",
-	"topTextColor": "# 00FFFF",
+	"topBannerColor": "#0000FF",
+	"topTextColor": "#00FFFF",
 	"bottomBannerSize": 5,
-	"bottomBannerColor": "# 00FF00",
-	"bottomTextColor": "# FFFF00",
+	"bottomBannerColor": "#00FF00",
+	"bottomTextColor": "#FFFF00",
 	"callsign": ""
 }
 
