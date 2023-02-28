@@ -15,7 +15,7 @@ def watermark(im, cfg):
 		bannerH=imH*cfg.topBannerSize//100
 		draw.rectangle([0, 0, imW, bannerH], fill=cfg.topBannerColor)
 		draw.text([0, 0], cfg.callsign, fill=topTextColor, font=ImageFont.truetype(size=bannerH))
-		draw.text([0, 0], PictpeaterMode, fill=topTextColor, font=ImageFont.truetype(size=bannerH), "rt")
+		draw.text([0, 0], PictpeaterMode, fill=topTextColor, font=ImageFont.truetype(size=bannerH), anchor="rt")
 	if cfg.bottomBannerSize > 0:
 		bannerH=imH*cfg.bottomBannerSize//100
 		draw.rectangle([imH-bannerH, 0, imW, imH], fill=cfg.bottomBannerColor)

@@ -5,7 +5,8 @@ Pictpeater main module
 
 from config import get_config as Config
 import middleware
-from base import *
+from backends import *
+from frontends import *
 
 """
 Version string
@@ -18,4 +19,4 @@ PictpeaterMode="Beacon"
 
 if __name__=="__main__":
 	cfg=Config({"callsign": "HA5KFU"})
-	
+	middleware.register_frontends([FrontendBeacon()], [BackendSSTV()], cfg)

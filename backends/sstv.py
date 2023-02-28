@@ -1,5 +1,5 @@
 from pysstv.color import MODES as ColorModes
-from pysstv.greyscale import MODES as GreyModes
+from pysstv.grayscale import MODES as GreyModes
 import simpleaudio as sa
 
 def get_mode(mode):
