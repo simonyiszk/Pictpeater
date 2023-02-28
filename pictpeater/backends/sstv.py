@@ -15,13 +15,14 @@ def get_mode(mode):
 class BackendSSTV(Backend):
 	def tx(self, im, cfg):
 		samp_rate=48000
-		bits=16
+		bits=8
 		cfgSSTV=cfg["backends"]["sstv"]
 		Mode=get_mode(cfgSSTV["mode"])
-		sstv=Mode(im, samp_rate, bits)
+		sstv=Mode(im.resize((Mode.WIDTH, Mode.HEIGHT)), samp_rate, bits)
+		sstv.vox_enabled=True
 		if "fsk_id" in cfgSSTV:
 			sstv.add_fskid_text(cfgSSTV["fsk_id"])
-		self.rig.ptt(True, cfg) 
-		play_obj=sa.play_buffer(sstv.gen_samples(), 1, bits//8, samp_rate)
+		self.rig.ptt(True, cfg)
+		play_obj=sa.play_buffer(bytes(i+128 for i in sstv.gen_samples()), 1, bits//8, samp_rate)
 		play_obj.wait_done()
 		self.rig.ptt(False, cfg) 
