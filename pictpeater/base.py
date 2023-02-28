@@ -17,6 +17,7 @@ class Backend:
 	
 	def set_rig(self, rig):
 		self.rig=rig
+		return self
 
 """
 A wrapper for controlling the radio hardware

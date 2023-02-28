@@ -25,7 +25,7 @@ def main():
 			}
 		}
 	})
-	middleware.register_frontends([FrontendBeacon()], [BackendSSTV(), BackendSave()], cfg)
+	middleware.register_frontends([FrontendBeacon()], [BackendSSTV().set_rig(RigHamlib()), BackendSave()], cfg)
 
 if __name__=="__main__":
 	main()

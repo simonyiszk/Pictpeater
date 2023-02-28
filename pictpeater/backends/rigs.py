@@ -2,8 +2,10 @@ import Hamlib
 from pictpeater.base import Rig
 
 class RigHamlib(Rig):
-	def ptt(self, ptt, cfg):
+	def __init__(self):
 		rig=Hamlib.Rig(Hamlib.RIG_MODEL_NETRIGCTL)
-		# TODO
 		rig.open()
-		rig.set_ptt(0, ptt)
+		self.rig=rig
+	
+	def ptt(self, ptt, cfg):
+		self.rig.set_ptt(0, ptt)
