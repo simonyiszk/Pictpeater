@@ -1,3 +1,4 @@
+from pictpeater.base import Backend
 from pysstv.color import MODES as ColorModes
 from pysstv.grayscale import MODES as GreyModes
 import simpleaudio as sa

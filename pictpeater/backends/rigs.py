@@ -1,4 +1,5 @@
 import Hamlib
+from pictpeater.base import Rig
 
 class RigHamlib(Rig):
 	def ptt(self, ptt, cfg):
