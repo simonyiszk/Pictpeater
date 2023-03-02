@@ -8,4 +8,4 @@ class RigHamlib(Rig):
 		self.rig=rig
 	
 	def ptt(self, ptt, cfg):
-		self.rig.set_ptt(0, ptt)
+		self.rig.set_ptt(Hamlib.RIG_VFO_CURR, ptt)
