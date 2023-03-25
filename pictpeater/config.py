@@ -2,17 +2,17 @@
 Pictpeater config handling
 """
 
-import tomllib
+import json
 
 def loadCfg(cfg):
 	if cfg is None:
 		return dict()
-	elif type(cfg) is dict:
+	elif isinstance(cfg, dict):
 		return cfg
-	elif type(cfg) is str:
-		return tomllib.loads(cfg)
+	elif isinstance(cfg, str):
+		return json.loads(cfg)
 	else:
-		return tomllib.load(cfg)
+		return json.load(cfg)
 
 defaultConfig={
 	"topBannerSize": 10,
@@ -25,7 +25,10 @@ defaultConfig={
 }
 
 def get_config(cfg=None):
-	cfgDict=defaultConfig
+	try:
+		cfgDict = open("config.json", "r")
+	except FileNotFoundError:
+		cfgDict=defaultConfig
 	for k, v in loadCfg(cfg).items():
 		cfgDict[k]=v
 	return cfgDict
