@@ -8,12 +8,13 @@ class BackendSave(Backend):
     queue = Queue()
     run = True
     suffix="jpeg"
+    consumer = None
 
     def __init__(self):
         super().__init__()
-        consumer = Thread(target=self.consume)
-        consumer.daemon=True
-        consumer.start()
+        self.consumer = Thread(target=self.consume)
+        self.consumer.daemon=True
+        self.consumer.start()
 
     def tx(self, im, cfg):
         cfgSave=cfg["backends"]["save"]
@@ -24,6 +25,6 @@ class BackendSave(Backend):
         while self.run:
             if self.queue.empty():
                 sleep(2)
-                return
+                continue
             im, name = self.queue.get()
             im.save(name, format=self.suffix, delete=False)

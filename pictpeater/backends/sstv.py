@@ -20,11 +20,12 @@ class BackendSSTV(Backend):
 	samp_rate=48000
 	bits=8
 	run = True
+	comsumer = None
 	def __init__(self):
 		super().__init__()
-		consumer = Thread(target=self.consume)
-		consumer.daemon=True
-		consumer.start()
+		self.consumer = Thread(target=self.consume)
+		self.consumer.daemon=True
+		self.consumer.start()
 
 	def tx(self, im, cfg):
 		cfgSSTV=cfg["backends"]["sstv"]
@@ -39,7 +40,7 @@ class BackendSSTV(Backend):
 		while self.run:
 			if self.queue.empty():
 				sleep(2)
-				return
+				continue
 			sstv, cfg = self.queue.get()
 			self.rig.ptt(True, cfg)
 			play_obj=sa.play_buffer(bytes(i+128 for i in sstv.gen_samples()), 1, self.bits//8, self.samp_rate)
